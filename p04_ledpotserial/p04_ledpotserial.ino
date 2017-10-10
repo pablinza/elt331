@@ -17,10 +17,14 @@ void loop()
 {
   valoradc = analogRead(A0); //Lectura del Pot 10k
   valoradc = map(valoradc, 0 , 1023, 0, 50); //Mapeo
-  if(valoradc >= 40)  //Si valor mayo a 4V
+  if(valoradc > 40)  //Si valor mayo a 4V
     digitalWrite(ledA, HIGH); //Activa led Azul
-  if(valoradc <= 10)  //Si valor menor a 1V
+  else
+    digitalWrite(ledA, LOW);
+  if(valoradc < 10)  //Si valor menor a 1V
     digitalWrite(ledR, HIGH); //Activa el led Rojo
+  else 
+    digitalWrite(ledR, LOW);
   Serial.print("Valor ADC:"); 
   Serial.print(valoradc); //Envia la conversion ADC por el puerto
   Serial.println();
